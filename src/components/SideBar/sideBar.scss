@@ -1,0 +1,98 @@
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content
+      }
+};
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content
+      }
+};
+
+.sidebar{
+    flex: 1;
+    padding: 30px 0;
+    background-color: #FFFFFF;
+    @include tablet{
+        display: none;
+    }
+    
+    
+    
+
+    .dropdown{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        padding-left: 30px;
+
+        span{
+            font-family: 'Work Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color:#213F7D;
+        }
+    }
+
+    .sidebar-wrapper{
+        .home{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            padding-left: 30px;
+
+            span{
+                font-family: 'Work Sans', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                color: #213F7D;
+            }
+        }
+
+        .sidebar-menu{
+            margin-bottom: 40px;
+            .sidebar-list-title{
+                font-family: 'Work Sans', sans-serif;
+                font-weight: 500;
+                font-size: 12px;
+                color: #545F7D;
+                margin-bottom: 15px;
+                padding-left: 30px;
+            }
+
+            .sidebar-list{
+                list-style: none;
+            }
+
+            .sidebar-list-item{
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                padding: 10px 10px 10px 30px;
+
+                span{
+                    font-family: 'Work Sans', sans-serif;
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #213F7D;
+                }
+
+
+                &:hover{
+                    background-color:rgba(#39cdcc, 0.06);
+                    border-left: 3px solid #39cdcc;
+                }
+
+            }
+
+            .selected{
+                background-color:rgba(#39cdcc, 0.06);
+                border-left: 3px solid #39cdcc;
+            }
+        }
+    }
+}

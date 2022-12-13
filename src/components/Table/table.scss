@@ -1,0 +1,324 @@
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content
+      }
+};
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content
+      }
+};
+
+
+.table-container{
+    // width: 97%;
+
+    .table-wrapper{
+        margin-top: 30px;
+        height: 790px;
+        position: sticky;
+        overflow-y: scroll;
+        
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #213F7D;
+            border-radius: 10px;
+        }
+
+        @include tablet{
+            height: 850px;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            background-color: #FFFFFF;
+            border: 1px solid rgba(33, 63, 125, 0.06);
+            box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+            border-radius: 4px;
+            width: 100%;
+            position: relative;
+
+
+
+            th {
+                padding: 20px 0;
+                text-align: left;
+                background-color: white;
+                position: sticky;
+                top: 0;
+                //width: 100%;
+
+
+                .popover{
+                    // position: relative;
+
+                    .popover-button{
+                        background-color: inherit;
+                        border: none;
+                        outline: none;
+                        width: 100%;
+                        font-family: "Work Sans", sans-serif;
+                        font-size: 12px;
+                        font-weight: 600;
+                        color: #545F7D;
+                        cursor: pointer;
+                    }
+
+                    .popover-panel{
+                        position: absolute;
+                        z-index: 10; 
+                        background-color: #FFFFFF;
+                        width: 270px;
+                        border: 1px solid rgba(84, 95, 125, 0.14);
+                        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+                        border-radius: 4px;
+                        margin: 20px 10px;
+
+                        .popover-panel-container{
+                            height: 100%;
+                            form{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                height: 100%;
+                                div{
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: flex-start;
+                                    padding: 20px;
+
+                                    label{
+                                        font-family: 'Work Sans';
+                                        font-weight: 500;
+                                        font-size: 14px;
+                                        color: #545F7D;
+                                        margin-bottom: 10px;
+                                    }
+
+                                    select{
+                                        width: 100%;
+                                        height: 40px;
+                                        background: #FFFFFF;
+                                        opacity: 0.2;
+                                        border: 1px solid #213F7D;
+                                        border-radius: 8px;
+                                        padding: 0 10px;
+
+                                        option{
+                                            font-family: 'Work Sans';
+                                            font-weight: 400;
+                                            font-size: 14px;
+                                            color: #545F7D;
+                                            opacity: 0.7;
+                                        }
+                                    }
+
+                                    input{
+                                       width: 100%;
+                                       height: 40px;
+                                       background: #FFFFFF;
+                                       opacity: 0.2;
+                                       border: 1px solid #213F7D;
+                                       border-radius: 8px;
+                                       padding: 0 10px;
+
+                                       &::placeholder{
+                                        font-family: 'Work Sans';
+                                        font-weight: 400;
+                                        font-size: 14px;
+                                        color: #545F7D;
+                                       }
+                                    }
+                                }
+
+                                .popover-panel-buttons{
+                                    display: flex;
+                                    width: 100%;
+                                    flex-direction: row;
+                                    justify-content: space-between;
+
+                                    .reset-button{
+                                        width: 98px;
+                                        height: 40px;
+                                        background: #FFFFFF;
+                                        border: 1px solid #545F7D;
+                                        border-radius: 8px;
+                                        font-family: 'Work Sans';
+                                        font-weight: 600;
+                                        font-size: 14px;
+                                        color: #545F7D;
+                                        cursor: pointer;
+                                    }
+
+                                    .filter-button{
+                                        width: 98px;
+                                        height: 40px;
+                                        background: #39CDCC;
+                                        border: 1px solid #39CDCC;
+                                        border-radius: 8px;
+                                        font-family: 'Work Sans';
+                                        font-weight: 600;
+                                        font-size: 14px;
+                                        color: #FFFFFF;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+                img{
+                    width: 12px;
+                    margin-left: 4px;
+                    object-fit: contain;
+                    cursor: pointer;
+                }
+            }
+
+            td {
+                border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+                padding: 20px 20px;
+                font-family: "Work Sans", sans-serif;
+                font-size: 12px;
+                text-align: left;
+                font-weight: 400;
+                color: #545F7D;
+
+                span{
+                    display: flex;
+                    flex-direction: row;
+                }
+            }
+
+            .last-td{
+                //padding-right: 10px;
+
+                .dropdown{
+                    // position: relative;
+
+                    .dropdown-button{
+                        border: none;
+                        background: inherit;
+                        cursor: pointer;
+                       
+                    }
+                    
+                    .dropdown-container{
+                        position: absolute;
+                        z-index: 10;
+                        right: 10px;
+                        width: 180px;
+                        height: 130px;
+                        background-color: #FFFFFF;
+                        border: 1px solid rgba(84, 95, 125, 0.04);
+                        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+                        border-radius: 4px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        padding: 20px;
+
+                        .dropdown-item{
+                            width: 100%;
+                            display: flex;
+                            gap: 5px;
+                            align-items: center;
+                            justify-content: flex-start;
+                            cursor: pointer;
+
+                            span{
+                                font-family: 'Work Sans';
+                                font-weight: 500;
+                                font-size: 14px;
+                                color: #545F7D;
+                                    
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+    .table-functions{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+
+        @include tablet{
+            flex-direction: column;
+        }
+
+        .page-size{
+
+            @include tablet{
+                margin-bottom: 30px;
+            }
+
+            span{
+                font-family: 'Work Sans';
+                font-weight: 400;
+                font-size: 14px;
+                color: #545F7D;
+
+            }
+            select{
+                width: 80px;
+                height: 30px;
+                border: none;
+                outline: none;
+                background: rgba(33, 63, 125, 0.1);
+                border-radius: 4px;
+                padding: 0 10px;
+                font-family: 'Work Sans';
+                font-weight: 500;
+                font-size: 14px;
+                color: #213F7D;
+
+                option{
+                    border: none;
+                    outline: none;
+                    background: rgba(33, 63, 125, 0.1);
+                }
+            }
+        }
+
+        .pagination{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            button{
+                background: rgba(33, 63, 125, 0.1);
+                border-radius: 4px;
+                border: none;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+  
+  
+  
+  
+  
+  

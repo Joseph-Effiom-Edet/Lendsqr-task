@@ -1,0 +1,45 @@
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content
+      }
+};
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content
+      }
+};
+
+.dashboard{
+    height: calc(100vh - 100px);
+    
+    .dashboard-wrapper{
+       
+        .dashboard-container {
+            display: flex;
+            @include tablet{
+                flex-direction: column;
+                position: relative;
+            }
+
+            .page{
+                flex: 4;
+                background: #E5E5E5;
+                padding: 55px 30px 0 30px;
+                
+                @include tablet{
+                    padding: 55px 10px 20px 10px;
+                }
+        
+                .header-text{
+                    font-family: 'Work Sans';
+                    font-weight: 500;
+                    font-size: 24px;
+                    color: #213F7D;
+                }
+            }
+        }
+    }
+    
+    
+
+}

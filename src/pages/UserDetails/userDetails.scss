@@ -1,0 +1,359 @@
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+};
+
+@mixin tablet {
+    @media screen and (max-width: 768px) {
+        @content
+      }
+};
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content
+      }
+};
+
+@include font-face("SFCompactText", "../../assets/fonts/SFCompactText-Regular", null, null, ttf);
+
+.user-details{
+
+    .user-details-container {
+        display: flex;
+        @include tablet{
+            flex-direction: column;
+        }
+        
+        
+        .user-details-page{
+            flex: 4;
+            background: #E5E5E5;
+            padding: 55px 0 0 50px;
+            @include tablet{
+                padding: 55px 0 0 5px;
+            
+            }
+
+            .go-back{
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                cursor: pointer;
+                margin-bottom: 30px;
+                @include tablet{
+                    padding-left: 20px;
+                }
+
+                span{
+                    font-family: 'Work Sans';
+                    font-weight: 400;
+                    font-size: 16px;
+                    color: #545F7D;
+                }
+            }
+
+            .header-text-with-buttons{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-right: 20px;
+                @include tablet{
+                    flex-direction: column;
+                    align-items: start;
+                    padding-left: 20px;
+                }
+
+                .header-text{
+                    font-family: 'Work Sans';
+                    font-weight: 500;
+                    font-size: 24px;
+                    color: #213F7D;
+                }
+
+                .buttons{
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    @include tablet{
+                        flex-direction: column;
+                        gap: 10px;
+                        margin-top: 20px;
+                    }
+
+                    .button-1{
+                        font-family: 'Work Sans';
+                        font-weight: 600;
+                        font-size: 14px;
+                        letter-spacing: 0.1em;
+                        color: #E4033B;
+                        width: 170px;
+                        height: 40px;
+                        border: 1px solid #E4033B;
+                        border-radius: 8px;
+                        background-color: inherit;
+                        cursor: pointer;
+                    }
+
+                    .button-2{
+                        font-family: 'Work Sans';
+                        font-weight: 600;
+                        font-size: 14px;
+                        letter-spacing: 0.1em;
+                        color: #39CDCC;
+                        width: 170px;
+                        height: 40px;
+                        border: 1px solid #39CDCC;
+                        border-radius: 8px;
+                        background-color: inherit;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .user-details-wrapper{
+                width: 98%;
+                margin-top: 40px;
+
+                .user-details-top{
+                    max-width: 100%;
+                    background-color: #FFFFFF;
+                    border: 1px solid rgba(33, 63, 125, 0.06);
+                    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+                    border-radius: 4px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    .user-details-top-upper{
+                        display: flex;
+                        align-items: center;
+                        gap: 30px;
+                        padding: 30px 0 0 30px;
+                        @include tablet{
+                            flex-direction: column;
+                            align-items: center;
+                            padding: 30px 0 0 0;
+                        }
+
+                        .profile-image{
+                            display: flex;
+                            align-items: center;
+                            gap: 20px;
+                            padding: 0 20px 0 0;
+                            border-right: 1px solid rgba(84,95,125,.2);
+                            @include tablet{
+                                flex-direction: column;
+                                align-items: center;
+                                border-right: none;
+                                border-bottom: 1px solid rgba(84,95,125,.2);
+                                padding: 0 0 20px 0;
+                            }
+                           img{
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+                           }
+
+                           div{
+                            @include tablet{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+
+                            h1{
+                                font-family: 'Work Sans';
+                                font-weight: 500;
+                                font-size: 22px;
+                                color: #213F7D;
+                                margin-bottom: 10px;
+                            }
+
+                            P{
+                                font-family: 'Work Sans';
+                                font-weight: 400;
+                                font-size: 14px;
+                                color: #545F7D;
+                            }
+                           }
+                        }
+
+                        .user-tier{
+                            padding: 31px 25px 25px 0;
+                            border-right: 1px solid rgba(84,95,125,.2);
+                            @include tablet{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                padding: 0 0 20px 0;
+                                border-right: none;
+                                border-bottom: 1px solid rgba(84,95,125,.2);
+                            }
+                            
+                            p{
+                                font-family: 'Work Sans';
+                                font-weight: 500;
+                                font-size: 14px;
+                                color: #545F7D;
+                                margin-bottom: 10px;
+                            }
+
+                            div{
+                                display: flex;
+                                align-items: center;
+                                gap: 5px;
+                            }
+                        }
+
+                        .bank-details{
+                            @include tablet{
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                margin-bottom: 20px;
+                            }
+                            p{
+                                font-family: 'Work Sans';
+                                font-weight: 500;
+                                font-size: 22px;
+                                color: #213F7D;
+                                margin-bottom: 10px;
+                            }
+
+                            span{
+                                font-family: 'Work Sans';
+                                font-weight: 400;
+                                font-size: 12px;
+                                color: #213F7D;
+                            }
+                        }
+                    }
+
+                    .tabs{
+                        display: flex;
+                        justify-content: space-between;
+                        max-width: 90%;
+                        margin: 40px 0 10px 50px;
+                        @include tablet{
+                            overflow-x: scroll;
+                            margin: 0 0 0 0;
+                            padding-bottom: 10px;
+                            max-width: 100%; 
+                        }
+                        span{
+                            flex-shrink: 0;
+                            font-family: "SFCompactText";
+                            font-size: 16px;
+                            color: rgba(0, 0, 0, 0.8);
+                            position: relative;
+                            @include tablet{
+                                width: 30%;
+                                text-align: center;
+                            }
+                        }
+
+                        .selected{
+                            color:#39CDCC;
+
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                display: block;
+                                height: 2px;
+                                width: 170px;
+                                background-color: #39CDCC;
+                                bottom: -12px;
+                                left: -33px;
+                                @include tablet{
+                                    bottom: -10px;
+                                    width: 85px;
+                                    left: 10px;
+                                }
+                            }
+                        } 
+                    }
+                }
+
+                .user-details-bottom{
+                    width: 100%;
+                    background-color: #FFFFFF;
+                    margin: 40px 0;
+                    padding: 0 30px;
+                    border: 1px solid rgba(33, 63, 125, 0.06);
+                    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+                    border-radius: 4px;
+
+                    .personal-info, .education-employment, .socials, .guarantor, .guarantor-2{
+                        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+                        padding: 30px 0;
+
+                        h1{
+                            font-family: 'Work Sans';        
+                            font-weight: 500;
+                            font-size: 16px;
+                            color: #213F7D;
+                            margin-bottom: 30px;
+                        }
+
+                        .information{
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 60px;
+                            align-items: center;
+                            justify-content: flex-start;
+                            @include tablet{
+                                flex-direction: column;
+                                align-items: start;
+                                gap: 20px;
+                            }
+                            div{
+                                width: 20%;
+                                @include tablet{
+                                    width: 100%;
+                                }
+                                p{
+                                    font-family: 'Work Sans';
+                                    font-weight: 400;
+                                    font-size: 12px;
+                                    color: #545F7D;
+                                    margin-bottom: 10px;
+                                }
+                                
+                                span{
+                                    font-family: 'Work Sans';
+                                    font-weight: 500;
+                                    font-size: 16px;
+                                    color: #545F7D;
+                                }
+                            }
+                        }
+                    }
+                        
+                }
+            }
+    
+        }
+    }
+}
